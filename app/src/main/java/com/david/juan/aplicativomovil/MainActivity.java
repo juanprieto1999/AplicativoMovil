@@ -43,18 +43,10 @@ public class MainActivity extends AppCompatActivity {
         listapersonas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String informacion="id: "+listausuarios.get(position).getId()+"\n";
-                informacion+="Nombre: "+ listausuarios.get(position).getNombre()+"\n";
-                informacion+="Telefono: "+ listausuarios.get(position).getTelefono()+"\n";
-                Toast.makeText(getApplicationContext(),informacion,Toast.LENGTH_LONG).show();
-
-                Usuario user=listausuarios.get(position);
-                // Intent intent=new Intent(Lista.this,Detalleusuario.class);
-                Bundle bundle=new Bundle();
-                bundle.putSerializable("usuario",user);
-
-                //intent.putExtras(bundle);
-                //startActivity(intent);
+                String informacion= listausuarios.get(position).getId().toString();
+              Intent intent=new Intent(MainActivity.this,Consultar.class);
+                intent.putExtra("ID",informacion);
+                startActivity(intent);
             }
         });
         listapersonas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -77,21 +69,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showalertedit(final int posicion) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        String[] lista={"Editar"};
-        builder.setTitle("Opciones");
-        builder.setItems(lista, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Usuario user=listausuarios.get(posicion);
-                // Intent intent=new Intent(Lista.this,Detalleusuario.class);
-                Bundle bundle=new Bundle();
-                bundle.putSerializable("usuario",user);
+   Toast.makeText(getApplicationContext(),posicion,Toast.LENGTH_SHORT).show();
 
-                //intent.putExtras(bundle);
-                //startActivity(intent);
-            }
-        });
 
             }
 

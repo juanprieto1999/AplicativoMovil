@@ -18,11 +18,18 @@ EditText camponombre,campoid,campotelefono;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar);
-
+        String idrecibido=getIntent().getStringExtra("ID");
         con=new ConexionSQLiteHelper(getApplicationContext(),"bdusuarios",null,1);
         campoid=(EditText)findViewById(R.id.campoId);
         camponombre=(EditText)findViewById(R.id.campoNombreConsulta);
         campotelefono=(EditText)findViewById(R.id.campoTelefonoConsulta);
+
+        if(idrecibido!=null){
+            campoid.setText(idrecibido);
+            consultarsql();
+
+        }
+
     }
     public void onClick(View view){
         switch (view.getId()){
